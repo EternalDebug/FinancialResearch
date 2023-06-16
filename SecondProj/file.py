@@ -362,7 +362,7 @@ def PlotterInterface(title, metNum, metNum2, filename, legend, AccList):
     # plt.close()
     return 1
 
-PlotterInterface('Гибридная ошибка. Сопоставление', 0, 1, 'AvgErr.png', ['На сырых данных','Значение на сырых данных','На обработанных данных','Значение на обработанных данных'], MetricsList)
+PlotterInterface('Гибридная ошибка. Сопоставление', 0, 1, 'AvgErr.png', ['На необработанных данных','Значение на необработанных данных','На обработанных данных','Значение на обработанных данных'], MetricsList)
 
 Clear_acc_list = []
 Proc_acc_list = []
@@ -455,7 +455,7 @@ print(cascade_metrics)
 cascade_metrics2 = [cascade_metrics[0] + cascade_metrics[1],
                    cascade_metrics[2] + cascade_metrics[3],
                    cascade_metrics[4] + cascade_metrics[5]]
-PlotterInterface('Гибридная ошибка. Каскады', 0, 4, 'AvgErr_Cascades.png', ['На сырых данных','Значение на сырых данных','На обработанных данных','Значение на обработанных данных'], cascade_metrics2)
+PlotterInterface('Гибридная ошибка. Каскады', 0, 4, 'AvgErr_Cascades.png', ['На необработанных данных','Значение на необработанных данных','На обработанных данных','Значение на обработанных данных'], cascade_metrics2)
 
 Cascade_accList = []
 
@@ -786,9 +786,13 @@ def Result(text):
 
     return res
 
+token = ''
+with open('token.txt') as tok:
+    token = tok.readline()
+
 import telebot;
 from telebot import types
-bot = telebot.TeleBot('Token');
+bot = telebot.TeleBot(token);
 
 
 users = {}
